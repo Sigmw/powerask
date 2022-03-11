@@ -30,9 +30,9 @@ fn main() {
         logout.connect_clicked(|_| {
             Command::new("bash")
                 .arg("-c")
-                .arg("i3-msg exit")
+                .arg("loginctl terminate-user $USER")
                 .output()
-                .expect("Failed to logout");
+                 .expect("Failed to logout");
         });
         let reboot = Button::with_label("Reboot");
         reboot.connect_clicked(|_| {
@@ -40,12 +40,12 @@ fn main() {
                 .arg("-c")
                 .arg("loginctl reboot")
                 .output()
-                .expect("Failed to Reboot");
+                 .expect("Failed to Reboot");
         });
         let suspend = Button::with_label("Suspend");
         suspend.connect_clicked(|_| {
-            Command::new("bash")
-                .arg("-c")
+             Command::new("bash")
+                 .arg("-c")
                 .arg("loginctl suspend")
                 .output()
                 .expect("Failed to Suspend");
